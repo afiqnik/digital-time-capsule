@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description"
+        content="Write a personal message and unlock it at a future date with Digital Time Capsule.">
+
+    <title>Digital Time Capsule</title>
+
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+    <main class="app-shell">
+
+        <!-- Site Header -->
+        <header class="site-header">
+            <p class="eyebrow">A capsule to hold your message</p>
+            <h1>Digital Time Capsule</h1>
+            <p class="intro">
+                Write a message to your future self and discover it when the time comes.
+            </p>
+        </header>
+
+        <!-- State 1: Creation Form -->
+        <section id="form-section" class="form-section" aria-labelledby="form-title">
+            <div class="form-heading">
+                <p class="eyebrow">Your message</p>
+                <h2 id="form-title">Write your message</h2>
+            </div>
+
+            <form id="message-form" class="message-form">
+                <div class="form-group">
+                    <label for="message-input">Your message</label>
+                    <textarea id="message-input" name="message" placeholder="Write something for your future self..."
+                        rows="6" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="message-timestamp">When should your capsule unlock?</label>
+                    <input type="datetime-local" id="message-timestamp" name="timestamp" required>
+                </div>
+
+                <button type="submit" id="seal-button">
+                    Seal My Capsule
+                </button>
+            </form>
+        </section>
+
+        <!-- State 2: Locked Capsule -->
+        <section id="locked-capsule-section" class="locked-capsule-section" aria-labelledby="locked-capsule-title"
+            hidden>
+            <div class="locked-capsule-heading">
+                <p class="eyebrow">Capsule locked</p>
+                <h2 id="locked-capsule-title">Your message is waiting for its moment.</h2>
+            </div>
+
+            <div class="countdown-heading">
+                <p class="eyebrow">Countdown to release</p>
+                <h3 id="countdown-title">Time remaining</h3>
+            </div>
+
+            <p id="countdown-timer" class="countdown-timer" aria-live="off">
+                Calculating...
+            </p>
+
+            <p>Your message is safely stored in this browser. Come back when the countdown ends.</p>
+        </section>
+
+        <!-- State 3: Unlocked Capsule -->
+        <section id="unlocked-capsule-section" class="unlocked-capsule-section" aria-labelledby="unlocked-capsule-title"
+            hidden>
+            <div class="unlocked-capsule-heading">
+                <p class="eyebrow">Capsule unlocked</p>
+                <h2 id="unlocked-capsule-title">A message from your past self.</h2>
+            </div>
+
+            <div class="message-content">
+                <p id="unlocked-message" class="unlocked-message"></p>
+            </div>
+
+            <button type="button" id="new-capsule-button">
+                Create Another Capsule
+            </button>
+        </section>
+
+        <!-- Site Footer -->
+        <footer class="site-footer">
+            <p>Built by Nik Afiq · <strong>Powered by Codyza</strong></p>
+        </footer>
+
+    </main>
+</body>
+
+</html>
