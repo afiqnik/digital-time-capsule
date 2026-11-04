@@ -66,6 +66,15 @@ describe("isValidCapsule", () => {
     it("should reject an object as capsule data", () => {
         expect(isValidCapsule({})).toBe(false);
     });
+
+    it("should reject a timestamp outside the valid date range", () => {
+        const capsule = {
+            message: "Hello, future me!",
+            unlockAt: Number.MAX_SAFE_INTEGER
+        };
+
+        expect(isValidCapsule(capsule)).toBe(false);
+    });
 });
 
 describe("calculateRemainingTime", () => {

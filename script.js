@@ -166,7 +166,6 @@ function resetCapsule() {
 
     // Clear application state
     currentCapsule = null;
-    localStorage.removeItem("digitalTimeCapsule");
 
     // Reset form inputs
     messageForm.reset();
@@ -174,6 +173,13 @@ function resetCapsule() {
     // Clear previous displayed message and countdown
     unlockedMessage.textContent = "";
     countdownTimer.textContent = "Calculating...";
+
+    try {
+        localStorage.removeItem("digitalTimeCapsule");
+    } catch (error) {
+        console.error("Unable to remove saved capsule:", error);
+        alert("Your capsule could not be removed from browser storage.");
+    }
 
     // Return to creation screen
     showScreen("form");

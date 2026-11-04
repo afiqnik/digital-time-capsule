@@ -40,6 +40,7 @@ export function isValidCapsule(capsule) {
         typeof capsule.message === "string" &&
         capsule.message.trim().length > 0 &&
         Number.isSafeInteger(capsule.unlockAt) &&
-        capsule.unlockAt > 0
+        capsule.unlockAt > 0 &&
+        Number.isFinite(new Date(capsule.unlockAt).getTime())
     );
 }
